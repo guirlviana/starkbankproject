@@ -45,11 +45,13 @@ class StarkBankClient():
                     
                 )
             ])
+
             for transfer in transfers:
-                print(transfer)
+                if transfer.status == 'created':
+                    print('Transfer made successfully')
+
 
         for invoice in invoices:
             invoice_date = invoice.created - timedelta(hours=3)
-        
             if invoice_date >= last_hour_ago and invoice_date <= time_now:
                 create_transfer(invoice.amount)
