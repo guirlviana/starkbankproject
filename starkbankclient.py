@@ -20,7 +20,7 @@ class StarkBankClient():
             print("An unexpected error has occurred: ", e)
         
         else:
-            print(f"{name} invoice issued")
+            print(f"{name} invoice issued at {datetime.now()}")
 
     
     def get_invoices(self, limit=12):
@@ -41,8 +41,7 @@ class StarkBankClient():
                     bank_code="20018183",
                     branch_code="0001",
                     account_number="6341320293482496",
-                    account_type='payment'
-                    
+                    account_type='payment',
                 )
             ])
 
