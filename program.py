@@ -14,11 +14,11 @@ def transfer_invoices(client):
     client.transfer_invoices(my_invoices)
 
 def job():
+    client = StarkBankClient()
     issue_invoices(client)
     transfer_invoices(client)
 
 if __name__ == '__main__':
-    client = StarkBankClient()
     
     while True:
         schedule.every(3).hours.do(job)
