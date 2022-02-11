@@ -1,8 +1,10 @@
 import starkbank
 from credentials import PRIVATE_KEY, PROJECT_ID
 from datetime import datetime, timedelta
+import random
 
 class StarkBankClient():
+    
     def __init__(self):
         project = starkbank.Project(
             environment="sandbox",
@@ -33,6 +35,8 @@ class StarkBankClient():
         last_hour_ago = time_now - timedelta(hours=last_hour)
 
         def create_transfer(invoice_amount):
+            # generate external id for each transfer
+            external_id = f'external-id-{random.randint(100, 999)}{random.randint(100, 999)}{random.randint(100, 999)}'
             transfers = starkbank.transfer.create([
                 starkbank.Transfer(
                     amount=invoice_amount,
@@ -42,6 +46,7 @@ class StarkBankClient():
                     branch_code="0001",
                     account_number="6341320293482496",
                     account_type='payment',
+                    external_id= external_id
                 )
             ])
 
