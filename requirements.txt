@@ -1,2 +1,4 @@
 starkbank==2.15.0
 schedule==1.1.0
+Faker==12.3.0
+cpf-generator==2.1.4
