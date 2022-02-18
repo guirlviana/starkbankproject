@@ -26,7 +26,7 @@ PRIVATE_KEY = '''YOUR_PRIVATE_KEY'''
 ```sh
 PROJECT_ID = 'YOUR_PROJECT_ID'
 ```
-
+3- At [program.py](https://github.com/guirlviana/starkbankproject/blob/main/program.py#L28) line 28 | change the url webhook for yours and put your subscriptions, if webhook have already created just keep the line commented to avoid an error
 ## The solution
 
 Finally, run the program.py
