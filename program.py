@@ -16,20 +16,24 @@ def issue_invoices(client, min_issue=8, max_issue=12):
         # issue the invoice (change the fake values to yours) default is random
         client.issue_invoice(amount_to_send=invoice_amount, tax_id=cpf, name=name) 
 
-def transfer_invoices(client, last_hour=3):
-    my_invoices = client.get_invoices() # get the daily invoices as status paid
-    client.transfer_invoices(my_invoices, last_hour) # transfer the invoices amount with interval time
+
 
 
 
 if __name__ == '__main__':
 
     client = StarkBankClient() # instance a client
-    
-    schedule.every(3).hours.do(transfer_invoices, client) # schedule the task
-    schedule.every(3).hours.do(issue_invoices, client) # schedule the task 
 
-    # checks the pending issues every one minute
+        # Run the line below only once
+    # client.create_webhook("https://webhook.site/e8555c1f-91ff-4255-9b1c-736d7c5ece5e", ["invoice"])
+    
+    schedule.every(3).minutes.do(issue_invoices, client)
+
+    # checks the pending and listen webhook every one minute
     while True:
         schedule.run_pending()
+        client.listen_webhook()
         time.sleep(60)
+    
+
+    
