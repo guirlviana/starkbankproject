@@ -27,7 +27,7 @@ if __name__ == '__main__':
         # Run the line below only once
     # client.create_webhook("https://webhook.site/e8555c1f-91ff-4255-9b1c-736d7c5ece5e", ["invoice"])
     
-    schedule.every(3).minutes.do(issue_invoices, client)
+    schedule.every(3).hours.do(issue_invoices, client)
 
     # checks the pending and listen webhook every one minute
     while True:
